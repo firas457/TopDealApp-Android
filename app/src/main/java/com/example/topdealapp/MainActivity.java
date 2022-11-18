@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Paper.init(this);
 
 
-        // click on login button
+        // click on (Already have an account) login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // click on (join now) button
         joinNowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // get phone and password
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    // check allow access
     private void AllowAccess(final String phone, final String password){
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -88,14 +92,14 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
-                        else{
+                        else{ // wrong password
                             loadingBar.dismiss();
                             Toast.makeText(MainActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 }
-                else{
+                else{ // number does not exists
                     Toast.makeText(MainActivity.this, "Account with this "  + phone + " number do not exists!", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
