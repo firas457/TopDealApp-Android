@@ -64,6 +64,7 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        txtTotalAmount.setText("Total Price = $" +String.valueOf(overTotalPrice)); // we can remove
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options =
@@ -79,6 +80,7 @@ public class CartActivity extends AppCompatActivity {
                         holder.txtProductPrice.setText("Price " + model.getPrice() + "$");
                         holder.txtProductName.setText(model.getPname());
 
+                        // calculate total price in cart list
                         double oneTypeProductPrice = ((Double.valueOf(model.getPrice()))) * Double.valueOf(model.getQuantity());
                         overTotalPrice = overTotalPrice + oneTypeProductPrice;
 
