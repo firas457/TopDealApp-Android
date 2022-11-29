@@ -146,6 +146,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+
+    // function to upload image
     private void uploadImage() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Update Profile");
@@ -199,6 +201,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
+    // display the information
     private void userInfoDisplay(CircleImageView profileImageView, EditText fullNameEditText, EditText userPhoneEditText, EditText addressEditText) {
 
         DatabaseReference UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
