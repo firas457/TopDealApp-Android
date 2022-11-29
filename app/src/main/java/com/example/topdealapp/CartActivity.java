@@ -33,6 +33,8 @@ public class CartActivity extends AppCompatActivity {
     private Button NextProccessBtn;
     private TextView txtTotalAmount;
 
+    private double overTotalPrice = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,17 @@ public class CartActivity extends AppCompatActivity {
 
         NextProccessBtn = (Button) findViewById(R.id.next_btn);
         txtTotalAmount = (TextView) findViewById(R.id.total_price);
+
+        NextProccessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTotalAmount.setText("Total Price = $" +String.valueOf(overTotalPrice));
+                Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -65,6 +78,9 @@ public class CartActivity extends AppCompatActivity {
                         holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
                         holder.txtProductPrice.setText("Price " + model.getPrice() + "$");
                         holder.txtProductName.setText(model.getPname());
+
+                        double oneTypeProductPrice = ((Double.valueOf(model.getPrice()))) * Double.valueOf(model.getQuantity());
+                        overTotalPrice = overTotalPrice + oneTypeProductPrice;
 
                         //remove or edit item when click on it in cart list
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
