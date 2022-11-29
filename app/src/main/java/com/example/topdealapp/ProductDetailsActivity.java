@@ -34,7 +34,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     //private ElegantNumberButton numberButton;
     private TextView productPrice, productDescription, productName;
-    private String producID = "";
+    private String productID = "";
 
 
     @Override
@@ -42,7 +42,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        producID = getIntent().getStringExtra("pid");
+        productID = getIntent().getStringExtra("pid");
 
         addToCartButton = (Button) findViewById(R.id.pd_add_to_cart_button);
 //        addToCartBtn = (FloatingActionButton) findViewById(R.id.add_product_to_cart_btn);
@@ -52,7 +52,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
 
-        getProductDetails(producID);
+        getProductDetails(productID);
 
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         final DatabaseReference cartListRef =FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("pid",producID);
+        cartMap.put("pid",productID);
         cartMap.put("pname",productName.getText().toString());
         cartMap.put("price",productPrice.getText().toString());
         cartMap.put("date",saveCurrentDate);
@@ -86,13 +86,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("discount","");
 
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
-                .child("Products").child(producID)
+                .child("Products").child(productID)
                 .updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone())
-                                    .child("Products").child(producID)
+                                    .child("Products").child(productID)
                                     .updateChildren(cartMap)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
