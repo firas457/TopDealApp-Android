@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_carr"
+            android:id="@+id/nav_cart"
             android:icon="@drawable/nav_cart"
             android:title="Cart"
             android:iconTint="@color/white"/>
