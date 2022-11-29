@@ -60,6 +60,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
+        // click on image to upload image from gallery
         InputProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +68,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             }
         });
 
+        // click on add product button
         AddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +78,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
+    // function to open the gallery
     private void OpenGallery(){
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
@@ -93,6 +96,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         }
     }
 
+    // check the validate of product data
     private void ValidateProductData(){
         Description = InputProductDescription.getText().toString();
         Price = InputProductPrice.getText().toString();
@@ -116,6 +120,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     }
 
+    // store the information of the product
     private void StoreProductInformation() {
 
         loadingBar.setTitle("Add New Product");
@@ -139,14 +144,14 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
         final UploadTask uploadTask = filePath.putFile(ImageUri);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
+        uploadTask.addOnFailureListener(new OnFailureListener() { // Error to upload image
             @Override
             public void onFailure(@NonNull Exception e) {
                 String message = e.toString();
                 Toast.makeText(AdminAddNewProductActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
             }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() { // success upload image
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(AdminAddNewProductActivity.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
@@ -160,7 +165,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         downloadImageUrl = filePath.getDownloadUrl().toString();
                         return filePath.getDownloadUrl();
                     }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() { // when complete to upload image
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
@@ -176,6 +181,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         });
     }
 
+    // save product information into the database
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("pid",productRandomKey);
@@ -190,14 +196,14 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         ProductsRef.child(productRandomKey).updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if(task.isSuccessful()){ // adding product successfully
                     Intent intent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
                     startActivity(intent);
 
                     loadingBar.dismiss();
                     Toast.makeText(AdminAddNewProductActivity.this, "Product is added successfully...", Toast.LENGTH_SHORT).show();
                 }
-                else{
+                else{ // failed to add product
                     loadingBar.dismiss();
                     String message = task.getException().toString();
                     Toast.makeText(AdminAddNewProductActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
