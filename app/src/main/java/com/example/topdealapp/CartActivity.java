@@ -146,7 +146,7 @@ public class CartActivity extends AppCompatActivity {
 
     private void CheckOrderState(){
         DatabaseReference ordersRef;
-        ordersRef =FirebaseDatabase.getInstance().getReference().child("Order").child(Prevalent.currentOnlineUser.getPhone());
+        ordersRef =FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
 
         ordersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,10 +167,10 @@ public class CartActivity extends AppCompatActivity {
                     }
                     else if(shippingState.equals("not shipped")){
                         txtTotalAmount.setText("Shipped State = Not Shipped");
-                        recyclerView.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
 
-                        txtMsg1.setVisibility(View.VISIBLE);
-                        NextProccessBtn.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.GONE);
+                        NextProccessBtn.setVisibility(View.VISIBLE);
 
                         Toast.makeText(CartActivity.this, "you can purchase more products,once you received your first final order", Toast.LENGTH_SHORT).show();
                     }
