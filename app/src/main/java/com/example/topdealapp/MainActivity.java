@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     Users userData = snapshot.child("Users").child(phone).getValue(Users.class);
 
                     if(userData.getPhone().equals(phone)){
-                        if(userData.getPassword().equals(password)){
+                        if(userData.getPassword().equals(password)){ // checking password to login
                             Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 else{ // number does not exists
                     Toast.makeText(MainActivity.this, "Account with this "  + phone + " number do not exists!", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-
                 }
             }
 

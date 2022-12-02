@@ -146,7 +146,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private void CheckOrderState(){
         DatabaseReference ordersRef;
-        ordersRef =FirebaseDatabase.getInstance().getReference().child("Order").child(Prevalent.currentOnlineUser.getPhone());
+        ordersRef =FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
 
         ordersRef.addValueEventListener(new ValueEventListener() {
             @Override

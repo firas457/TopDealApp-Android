@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
 
-                //when press on item
+                //when press on product
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -205,21 +205,3 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 }
 
-
-
-
-
-
-
-
-
-
-//
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
-//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
-//
-//
