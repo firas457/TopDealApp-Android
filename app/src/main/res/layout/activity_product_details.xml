@@ -53,6 +53,41 @@
         />
 
     <!-- we need to add elegant button-->
+    <LinearLayout
+        android:layout_below="@+id/product_price_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/add_item"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/plusicon"/>
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/remove_item"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/iconminus"/>
+
+    </LinearLayout>
+
+
+
 
 
     <Button

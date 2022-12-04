@@ -37,6 +37,7 @@ public class CartActivity extends AppCompatActivity {
     private TextView txtTotalAmount, txtMsg1;
 
     private double overTotalPrice = 0;
+    double oneTypeProductPrice;
 
 
     @Override
@@ -86,7 +87,7 @@ public class CartActivity extends AppCompatActivity {
                         holder.txtProductName.setText(model.getPname());
 
                         // calculate total price in cart list
-                        double oneTypeProductPrice = ((Double.valueOf(model.getPrice()))) * Double.valueOf(model.getQuantity());
+                        oneTypeProductPrice = (Double.parseDouble(model.getPrice())) * (Double.parseDouble(model.getQuantity()));
                         overTotalPrice = overTotalPrice + oneTypeProductPrice;
 
                         //remove or edit item when click on it in cart list

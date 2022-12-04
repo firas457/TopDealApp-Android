@@ -31,10 +31,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private Button addToCartButton;
 //    private FloatingActionButton addToCartBtn;
-    private ImageView productImage;
+    private ImageView productImage, addItems, removeItems;
     //private ElegantNumberButton numberButton;
-    private TextView productPrice, productDescription, productName;
+    private TextView productPrice, productDescription, productName, quantity;
     private String productID = "", state = "Normal";
+    int totalQuantity = 1;
+    double totalPrice;
 
     @Override
     protected void onStart() {
@@ -58,6 +60,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
 
+        addItems = findViewById(R.id.add_item);
+        removeItems = findViewById(R.id.remove_item);
+        quantity = findViewById(R.id.quantity);
+
         getProductDetails(productID);
 
         addToCartButton.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +74,29 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
                 else{
                     addingToCartList();
+                }
+            }
+        });
+
+        // adding quantity items
+        addItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(totalQuantity < 10){
+                    totalQuantity++;
+                    quantity.setText(String.valueOf(totalQuantity));
+                }
+
+            }
+        });
+
+        // removing quantity items
+        removeItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(totalQuantity > 1){
+                    totalQuantity--;
+                    quantity.setText(String.valueOf(totalQuantity));
                 }
             }
         });
@@ -93,7 +122,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("price",productPrice.getText().toString());
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
-        cartMap.put("quantity",/*numberButton.getNumber()*/ "1"); // we need to add number button
+        cartMap.put("quantity",/*numberButton.getNumber()*/ String.valueOf(totalQuantity)); // we need to add number button
         cartMap.put("discount","");
 
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
