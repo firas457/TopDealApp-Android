@@ -1,4 +1,4 @@
-package com.example.topdealapp;
+package com.example.topdealapp.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.topdealapp.HomeActivity;
+import com.example.topdealapp.MainActivity;
+import com.example.topdealapp.R;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 

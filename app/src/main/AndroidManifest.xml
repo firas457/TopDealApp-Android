@@ -16,6 +16,13 @@
         android:theme="@style/Theme.TopDealApp"
         tools:targetApi="31">
         <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PaymentActivity"
             android:exported="false">
             <meta-data
@@ -23,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminMaitainProductsActivity"
+            android:name=".Admin.AdminMaitainProductsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -37,14 +44,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminUserProductsActivity"
+            android:name=".Admin.AdminUserProductsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminNewOrdersActivity"
+            android:name=".Admin.AdminNewOrdersActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -88,14 +95,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminCategoryActivity"
+            android:name=".Admin.AdminCategoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminAddNewProductActivity"
+            android:name=".Admin.AdminAddNewProductActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

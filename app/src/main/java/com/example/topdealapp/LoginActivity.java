@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.topdealapp.Admin.AdminCategoryActivity;
 import com.example.topdealapp.Model.Users;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button LoginButton;
     private ProgressDialog loadingBar;
     private CheckBox chkBoxRememberMe;
-    private TextView AdminLink, NotAdminLink;
+    private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     private String parentDbName = "Users";
 
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        ForgetPasswordLink = (TextView) findViewById(R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
         chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
 
@@ -55,6 +57,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LoginUser();
+            }
+        });
+
+        ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                intent.putExtra("login", "check");
+                startActivity(intent);
             }
         });
 
