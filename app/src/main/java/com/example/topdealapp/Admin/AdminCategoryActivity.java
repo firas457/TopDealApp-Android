@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.topdealapp.HomeActivity;
-import com.example.topdealapp.MainActivity;
+import com.example.topdealapp.Buyers.HomeActivity;
+import com.example.topdealapp.Buyers.MainActivity;
 import com.example.topdealapp.R;
 
 public class AdminCategoryActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.topdealapp;
+package com.example.topdealapp.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.topdealapp.Model.Products;
+import com.example.topdealapp.R;
 import com.example.topdealapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

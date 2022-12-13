@@ -1,4 +1,4 @@
-package com.example.topdealapp;
+package com.example.topdealapp.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.topdealapp.Model.Cart;
 import com.example.topdealapp.Prevalent.Prevalent;
+import com.example.topdealapp.R;
 import com.example.topdealapp.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

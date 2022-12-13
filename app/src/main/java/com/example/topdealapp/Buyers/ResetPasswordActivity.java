@@ -1,4 +1,4 @@
-package com.example.topdealapp;
+package com.example.topdealapp.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.topdealapp.Prevalent.Prevalent;
+import com.example.topdealapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
@@ -168,7 +168,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             else if(!ans2.equals(answer2)){
                                 Toast.makeText(ResetPasswordActivity.this, "Your 2nd answer is wrong", Toast.LENGTH_SHORT).show();
                             }
-                            else{
+                            else{ // the two answers to the security questions are corrects
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ResetPasswordActivity.this);
                                 builder.setTitle("New Password");
 
@@ -186,7 +186,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if(task.isSuccessful()){
                                                                 Toast.makeText(ResetPasswordActivity.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-                                                                Intent intent = new Intent(ResetPasswordActivity.this,LoginActivity.class);
+                                                                Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
                                                                 startActivity(intent);
                                                             }
                                                         }
