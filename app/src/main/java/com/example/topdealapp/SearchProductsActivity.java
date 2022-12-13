@@ -43,7 +43,7 @@ public class SearchProductsActivity extends AppCompatActivity {
         SearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchInput = inputText.getText().toString();
+                SearchInput = inputText.getText().toString().toLowerCase();
 
                 onStart();
             }
