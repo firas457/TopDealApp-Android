@@ -112,7 +112,7 @@ public class SellerRegistrationActivity extends AppCompatActivity {
 
         }
         else{
-            Toast.makeText(this, "Please complete registration form.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please complete the registration form.", Toast.LENGTH_SHORT).show();
         }
     }
 }
