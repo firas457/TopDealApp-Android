@@ -85,9 +85,6 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
                                 builder.show();
                             }
                         });
-
-
-
                     }
 
                     @NonNull
