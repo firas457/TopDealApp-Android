@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.topdealapp.Admin.AdminHomeActivity;
 import com.example.topdealapp.Sellers.SellerProductCategoryActivity;
 import com.example.topdealapp.Model.Users;
 import com.example.topdealapp.Prevalent.Prevalent;
@@ -132,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Welcome admin, you are Logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(LoginActivity.this, SellerProductCategoryActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("Users")){

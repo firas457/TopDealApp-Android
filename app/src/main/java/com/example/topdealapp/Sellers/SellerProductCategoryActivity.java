@@ -15,47 +15,14 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
     private ImageView glasses, hatsCaps, walletBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
 
-    //private Button LogoutBtn, CheckOrdersBtn, maintainProductsBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_add_category);
+        setContentView(R.layout.activity_seller_product_category);
 
-//        LogoutBtn = (Button) findViewById(R.id.admin_logout_btn);
-//        CheckOrdersBtn = (Button) findViewById(R.id.check_orders_btn);
-//        maintainProductsBtn = (Button) findViewById(R.id.maintain_btn);
-//
-//
-//        // click on maintain button
-//        maintainProductsBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
-//                intent.putExtra("Admin", "Admin");
-//                startActivity(intent);
-//            }
-//        });
-//
-//
-//        // click on logout button
-//        LogoutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        CheckOrdersBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
 
         tShirts = (ImageView) findViewById(R.id.t_shirts);
         sportsTShirts = (ImageView) findViewById(R.id.sports_t_shirts);
