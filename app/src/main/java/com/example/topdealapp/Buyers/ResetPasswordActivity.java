@@ -67,7 +67,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                    setAnswers();
-
                 }
             });
         }
@@ -127,15 +126,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 if(snapshot.exists()){
                     String ans1 = snapshot.child("answer1").getValue().toString();
                     String ans2 = snapshot.child("answer2").getValue().toString();
-
                     question1.setText(ans1);
                     question2.setText(ans2);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

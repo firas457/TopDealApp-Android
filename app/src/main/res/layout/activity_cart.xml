@@ -53,12 +53,27 @@
         android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark"
         android:text="Next"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:layout_margin="10dp"
+        android:layout_marginBottom="0dp"
+        android:layout_above="@+id/back_from_cart_to_home_btn"
+        />
+
+    <Button
+        android:id="@+id/back_from_cart_to_home_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         />
 
 </RelativeLayout>

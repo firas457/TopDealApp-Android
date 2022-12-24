@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.edmodo.cropper.CropImageView;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;
 import com.google.android.gms.tasks.Continuation;
@@ -50,6 +51,11 @@ public class SettingsActivity extends AppCompatActivity {
     private String checker = "";
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DisplayInfo();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +108,7 @@ public class SettingsActivity extends AppCompatActivity {
                 checker = "clicked";
                 // we need to add cropImage
 
-//                Crop.pickImage(SettingsActivity.this);
-//                Crop.of(imageUri,imageUri).start(SettingsActivity.this);
+
 //                CropImage.activity(imageUri)
 //                        .setAspectRatio(1,1)
 //                        .start(SettingsActivity.this);
@@ -239,5 +244,49 @@ public class SettingsActivity extends AppCompatActivity {
 
              }
          });
+    }
+
+    private void DisplayInfo(){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                .child("Users")
+                .child(Prevalent.currentOnlineUser.getPhone());
+        ref.child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String name = snapshot.getValue().toString();
+                    fullNameEditText.setText(name);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        ref.child("address").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String address = snapshot.getValue().toString();
+                    addressEditText.setText(address);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        ref.child("phone").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String phone = snapshot.getValue().toString();
+                    userPhoneEditText.setText(phone);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }
