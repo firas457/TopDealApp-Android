@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.topdealapp.Admin.AdminMaitainProductsActivity;
+import com.example.topdealapp.Category.CategoryHomeActivity;
 import com.example.topdealapp.Model.Products;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;
@@ -193,6 +194,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_categories) {
+            if(!type.equals("Admin")){
+                Intent intent = new Intent(HomeActivity.this, CategoryHomeActivity.class);
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_settings) {
             if(!type.equals("Admin")){

@@ -37,7 +37,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.example.topdealapp.Sellers.databinding.ActivitySellerHomeBinding;
 
 public class SellerHomeActivity extends AppCompatActivity {
 

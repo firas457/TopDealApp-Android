@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.topdealapp.Category.CategoryHomeActivity;
 import com.example.topdealapp.Model.Products;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private Button addToCartButton;
+    private Button addToCartButton, backButton;
 //    private FloatingActionButton addToCartBtn;
     private ImageView productImage, addItems, removeItems;
     //private ElegantNumberButton numberButton;
@@ -53,6 +54,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productID = getIntent().getStringExtra("pid");
 
         addToCartButton = (Button) findViewById(R.id.pd_add_to_cart_button);
+        backButton = (Button) findViewById(R.id.back_cart_button);
 //        addToCartBtn = (FloatingActionButton) findViewById(R.id.add_product_to_cart_btn);
         //numberButton = (ElegantNumberButton) findViewById(R.id.number_btn)
         productImage = (ImageView) findViewById(R.id.product_image_details);
@@ -87,6 +89,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     quantity.setText(String.valueOf(totalQuantity));
                 }
 
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
