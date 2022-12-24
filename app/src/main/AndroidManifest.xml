@@ -117,14 +117,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Admin.AdminCategoryActivity"
+            android:name=".Sellers.SellerProductCategoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Admin.AdminAddNewProductActivity"
+            android:name=".Sellers.SellerAddNewProductActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

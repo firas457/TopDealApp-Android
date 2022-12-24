@@ -120,8 +120,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
 
+        // display products in the home page if the product is approved by admin
         FirebaseRecyclerOptions<Products> options =new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class).build();
+                .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class).build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override

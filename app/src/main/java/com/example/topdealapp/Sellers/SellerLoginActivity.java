@@ -29,11 +29,11 @@ public class SellerLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_login);
 
+        mAuth = FirebaseAuth.getInstance();
+
         emailInput = findViewById(R.id.seller_login_email);
         passwordInput = findViewById(R.id.seller_login_password);
         loginSellerBegin = findViewById(R.id.seller_login_btn);
-
-        mAuth = FirebaseAuth.getInstance();
         loadingBar = new ProgressDialog(this);
 
         loginSellerBegin.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +45,8 @@ public class SellerLoginActivity extends AppCompatActivity {
     }
 
     private void loginSeller() {
-        String email = emailInput.getText().toString();
-        String password = passwordInput.getText().toString();
+        final String email = emailInput.getText().toString();
+        final String password = passwordInput.getText().toString();
 
         if(!email.equals("") && !password.equals("")) {
 

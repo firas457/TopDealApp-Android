@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.topdealapp.R;
+import com.example.topdealapp.Sellers.SellerProductCategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -70,7 +71,7 @@ public class AdminMaitainProductsActivity extends AppCompatActivity {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(AdminMaitainProductsActivity.this, AdminCategoryActivity.class);
+                Intent intent = new Intent(AdminMaitainProductsActivity.this, SellerProductCategoryActivity.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(AdminMaitainProductsActivity.this, "The Product is deleted successfully", Toast.LENGTH_SHORT).show();
@@ -105,7 +106,7 @@ public class AdminMaitainProductsActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(AdminMaitainProductsActivity.this, "Changes applied Successfully.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AdminMaitainProductsActivity.this, AdminCategoryActivity.class);
+                        Intent intent = new Intent(AdminMaitainProductsActivity.this, SellerProductCategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }
