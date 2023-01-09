@@ -102,7 +102,22 @@
 
 
 
-![image](https://user-images.githubusercontent.com/97015893/211294169-73411bf2-6731-4fdd-86fa-d0dfdf06eb3e.png)
+
+### Admin Home Page
+
+#### The admin home page is the starting point for admins when they log in to the app. It provides access to various app features that are specific to admins.
+
+#### The page includes a "Maintain Products" button that allows admins to view, edit, and remove products from the app. Admins can use this button to update the product catalog or remove products that are no longer available.
+
+#### The page also includes a "Check New Orders" button that allows admins to view and ship submitted orders. When this button is clicked, a list of orders appears, each of which includes the shipping address of the customer. Admins can use this button to manage the fulfillment process for orders.
+
+#### Finally, the page includes a "Check and Approve New Products" button that allows admins to view and approve products that have been submitted by sellers. Admins can use this button to review new products and decide whether to approve them for sale on the app.
+
+#### At the bottom of the page is a "Logout" button that allows admins to log out of their account.
+
+![admin home page](https://user-images.githubusercontent.com/97015893/211294169-73411bf2-6731-4fdd-86fa-d0dfdf06eb3e.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/97015893/211294195-9c055e5a-a4cb-413a-a9ee-104a3cc7be15.png)
 
