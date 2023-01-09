@@ -129,4 +129,25 @@
 
 
 
+## System Design Diagrams
+### Activity diagram
+![Activity diagram](https://user-images.githubusercontent.com/97015893/211307044-293f2ae1-cfbc-47ef-a0f7-5baf790da399.png)
+
+### Class diagram
+![Class diagram](https://user-images.githubusercontent.com/97015893/211307227-6b7532f8-a5e7-488a-974f-6ce1c93429a1.png)
+
+### ERD diagram
+![ERD diagram](https://user-images.githubusercontent.com/97015893/211307328-f8409865-d726-40f0-8a7b-184316274cb8.png)
+
+### Object diagram
+![Object diagram](https://user-images.githubusercontent.com/97015893/211307414-6a4856fe-2567-4cb4-94fb-d70a02eee83c.png)
+
+### Sequence diagram
+![Sequence diagram](https://user-images.githubusercontent.com/97015893/211307508-791614dc-59d4-414f-bb86-bab51c99e697.png)
+
+### State Machine diagram
+![State Machine diagram](https://user-images.githubusercontent.com/97015893/211307577-478b0e98-7ca9-41c8-86c0-1eeaf628a47c.png)
+
+### USE Case diagram
+![ USE Case diagram](https://user-images.githubusercontent.com/97015893/211307654-33b29510-bc36-4768-87de-2c077dfb5dc9.png)
 
