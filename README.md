@@ -60,7 +60,23 @@
 ![seller register Page](https://user-images.githubusercontent.com/97015893/211293926-1157d8b2-f03c-46ba-afdd-16725ff01108.png)
 
 
-![image](https://user-images.githubusercontent.com/97015893/211294003-e3e72a4a-effa-46ca-ae65-a5ebb0e0592a.png)
+### Home page and navbar:
+#### home page, which displays a variety of products that users can browse and purchase.
+#### The products are organized using a navbar that allows users to select different categories or view all products.
+#### At the bottom of the screen is a button that takes users to their cart list.
+
+#### The home page for users (buyers) features a navbar at the top of the screen that provides access to various app features.
+#### The navbar includes:
+##### - profile picture and profile name
+##### - button that takes users to their cart list,
+##### - button for searching for products,
+##### - button for displaying products by category,
+##### - button for accessing the app settings.
+#### In the settings menu, users can update their address, name, and password. There is also a logout button that allows users to log out of their account.
+
+![Home page and navbar](https://user-images.githubusercontent.com/97015893/211294003-e3e72a4a-effa-46ca-ae65-a5ebb0e0592a.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/97015893/211294108-fe7d2c8d-09f7-4cd9-8024-ff624b3dd7f5.png)
 
