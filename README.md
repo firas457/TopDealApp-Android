@@ -12,6 +12,6 @@
 
 Here are some screenshots of our app:
 
-![Screenshot 1](screenshot-1.png)
+![Screenshot 1](![image](https://user-images.githubusercontent.com/97015893/211293355-2582f2e5-5a62-40cb-bc07-f117165bc71b.png))
 ![Screenshot 2](screenshot-2.png)
 ![Screenshot 3](screenshot-3.png)
