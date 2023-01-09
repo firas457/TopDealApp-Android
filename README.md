@@ -77,10 +77,30 @@
 ![Home page and navbar](https://user-images.githubusercontent.com/97015893/211294003-e3e72a4a-effa-46ca-ae65-a5ebb0e0592a.png)
 
 
+### product details page:
 
-![image](https://user-images.githubusercontent.com/97015893/211294108-fe7d2c8d-09f7-4cd9-8024-ff624b3dd7f5.png)
+#### The product details page provides users with detailed information about a specific product. It includes an image of the product, the product's name, a description of the product, the price of the product, and a field for entering the quantity of the product that the user wants to buy.
 
-![image](https://user-images.githubusercontent.com/97015893/211294152-9fe61f13-f598-44e3-b503-8f736b97f7d9.png)
+#### There are also two buttons at the bottom of the page: a "Add to Cart" button and a "BACK" button. The "Add to Cart" button allows users to add the product to their cart list, while the "BACK" button takes them back to the home page.
+
+#### In the screenshot, the user is viewing the details of a particular product and has the option to add it to their cart or return to the home page
+
+![product details page](https://user-images.githubusercontent.com/97015893/211294108-fe7d2c8d-09f7-4cd9-8024-ff624b3dd7f5.png)
+
+
+
+
+### Cart List Page:
+
+#### The cart list page displays a list of all the products that the user has added to their cart. For each product, the page shows the price and quantity of the product. The page also displays the total price of all the products in the cart.
+
+#### There are two buttons at the bottom of the page: a "BACK" button that takes users back to the home page, and a "Next" button that takes them to a page where they can enter their shipment details.
+
+#### Users can view or edit the details of a particular product by clicking on it in the list. by clicking on it users get to options edit to edit product(quantity) or remove to remove product from cart list.
+
+![cart list page](https://user-images.githubusercontent.com/97015893/211294152-9fe61f13-f598-44e3-b503-8f736b97f7d9.png)
+
+
 
 ![image](https://user-images.githubusercontent.com/97015893/211294169-73411bf2-6731-4fdd-86fa-d0dfdf06eb3e.png)
 
