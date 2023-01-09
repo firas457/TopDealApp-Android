@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.topdealapp.Category.CategoryHomeActivity;
 import com.example.topdealapp.Model.Products;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.topdealapp.Admin.AdminMaitainProductsActivity;
-import com.example.topdealapp.Category.CategoryHomeActivity;
 import com.example.topdealapp.Model.Products;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;

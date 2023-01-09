@@ -58,6 +58,10 @@ public class SearchProductsActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products");
 
         // search by product name
+//        FirebaseRecyclerOptions<Products> options =
+//                new FirebaseRecyclerOptions.Builder<Products>()
+//                        .setQuery(reference.orderByChild("pname").startAt(SearchInput), Products.class)
+//                        .build();
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(reference.orderByChild("pname").startAt(SearchInput), Products.class)

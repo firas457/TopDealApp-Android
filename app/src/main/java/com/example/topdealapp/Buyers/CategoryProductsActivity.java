@@ -1,4 +1,4 @@
-package com.example.topdealapp.Category;
+package com.example.topdealapp.Buyers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.topdealapp.Buyers.ProductDetailsActivity;
 import com.example.topdealapp.Model.Products;
 import com.example.topdealapp.R;
 import com.example.topdealapp.ViewHolder.ProductViewHolder;

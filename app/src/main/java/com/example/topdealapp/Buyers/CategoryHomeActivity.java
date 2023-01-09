@@ -1,4 +1,4 @@
-package com.example.topdealapp.Category;
+package com.example.topdealapp.Buyers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.topdealapp.Buyers.HomeActivity;
 import com.example.topdealapp.R;
 
 public class CategoryHomeActivity extends AppCompatActivity {
