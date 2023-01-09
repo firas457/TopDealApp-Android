@@ -103,7 +103,7 @@
 
 
 
-### Admin Home Page
+### Admin Home Page:
 
 #### The admin home page is the starting point for admins when they log in to the app. It provides access to various app features that are specific to admins.
 
@@ -119,7 +119,12 @@
 
 
 
-![image](https://user-images.githubusercontent.com/97015893/211294195-9c055e5a-a4cb-413a-a9ee-104a3cc7be15.png)
+### seller Home page:
+#### The seller home page is the starting point for sellers when they log in to the app. It displays a list of all the products that the seller has added to the app, along with a status indicator that shows whether each product has been approved or not.
+
+#### At the bottom of the page, there are three options: "Home," "Add," and "Logout." The "Home" option takes the seller back to the home page, the "Add" option allows the seller to add a new product to the app, and the "Logout" option allows the seller to log out of their accoun
+
+![seller Home page](https://user-images.githubusercontent.com/97015893/211294195-9c055e5a-a4cb-413a-a9ee-104a3cc7be15.png)
 
 
 
