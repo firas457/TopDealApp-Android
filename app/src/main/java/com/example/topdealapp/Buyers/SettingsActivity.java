@@ -16,11 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.edmodo.cropper.CropImageView;
+
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;
+import com.example.topdealapp.Sellers.SellerAddNewProductActivity;
+import com.example.topdealapp.Sellers.SellerHomeActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -46,9 +51,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private String myUrl = "";
-    private StorageTask uploadTask;
+    //private StorageTask uploadTask;
     private StorageReference storageProfilePrictureRef;
     private String checker = "";
+    private String downloadImageUrl;
 
 
     @Override
@@ -74,6 +80,17 @@ public class SettingsActivity extends AppCompatActivity {
         securityQuestionBtn = (Button) findViewById(R.id.security_questions_btn);
 
         userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText);
+
+//        profileImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checker = "clicked";
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                intent.setType("image/*");
+//                startActivityForResult(intent, 33);
+//            }
+//        });
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +125,12 @@ public class SettingsActivity extends AppCompatActivity {
                 checker = "clicked";
                 // we need to add cropImage
 
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 33);
+
+
 
 //                CropImage.activity(imageUri)
 //                        .setAspectRatio(1,1)
@@ -133,9 +156,14 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(/*requestCode == Crop.REQUEST_CROP && */resultCode == RESULT_OK && data != null){
+        if(requestCode == 33 && resultCode == RESULT_OK && data != null){
+
+//            Uri ProfileUri = data.getData();
+//            profileImageView.setImageURI(ProfileUri);
 //            Crop.ActivityResult result = CropImage.ActivityResult.getActivityResult(data);
 //            imageUri = result.getUri();
+
+            imageUri = data.getData();
 
 
             profileImageView.setImageURI(imageUri);
@@ -152,10 +180,10 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(this, "Name is mandatory", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(addressEditText.getText().toString())){
-            Toast.makeText(this, "Name is address", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Address is mandatory", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(userPhoneEditText.getText().toString())){
-            Toast.makeText(this, "Name is mandatory", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Phone is mandatory", Toast.LENGTH_SHORT).show();
         }
         else if(checker.equals("clicked")){
             uploadImage();
@@ -174,43 +202,102 @@ public class SettingsActivity extends AppCompatActivity {
 
         if(imageUri != null){
             final StorageReference fileRef = storageProfilePrictureRef.child(Prevalent.currentOnlineUser.getPhone() + ".jpg");
-            uploadTask = fileRef.putFile(imageUri);
+            final UploadTask uploadTask = fileRef.putFile(imageUri);
 
-            uploadTask.continueWithTask(new Continuation() {
+            uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
-                public Object then(@NonNull Task task) throws Exception {
-                    if(!task.isSuccessful()){
-                        throw task.getException();
-                    }
-                    return fileRef.getDownloadUrl();
+                public void onFailure(@NonNull Exception e) {
+                    String message = e.toString();
+                    Toast.makeText(SettingsActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri> () {
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if(task.isSuccessful()){
-                        Uri downloadUrl = task.getResult();
-                        myUrl = downloadUrl.toString();
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(SettingsActivity.this, "Profile Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        @Override
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if(!task.isSuccessful()){
+                                throw task.getException();
+                            }
+                            downloadImageUrl = fileRef.getDownloadUrl().toString();
+                            return fileRef.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if(task.isSuccessful()){
+                                downloadImageUrl = task.getResult().toString();
+                                Toast.makeText(SettingsActivity.this, "got the Profile image Url Successfully...", Toast.LENGTH_SHORT).show();
 
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
-                        HashMap<String, Object> userMap = new HashMap<>();
-                        userMap.put("name",fullNameEditText.getText().toString());
-                        userMap.put("address",addressEditText.getText().toString());
-                        userMap.put("phoneOrder",userPhoneEditText.getText().toString());
-                        userMap.put("image",myUrl);
-                        ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+                                HashMap<String, Object> userMap = new HashMap<>();
+                                userMap.put("name",fullNameEditText.getText().toString());
+                                userMap.put("address",addressEditText.getText().toString());
+                                userMap.put("phoneOrder",userPhoneEditText.getText().toString());
+                                userMap.put("image",downloadImageUrl);
+                                ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
+                                            startActivity(intent);
+                                            progressDialog.dismiss();
+                                            Toast.makeText(SettingsActivity.this, "image is added successfully...", Toast.LENGTH_SHORT).show();
 
-                        progressDialog.dismiss();
+                                        }
+                                        else{
+                                            progressDialog.dismiss();
+                                            String message = task.getException().toString();
+                                            Toast.makeText(SettingsActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
-                        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
-                        Toast.makeText(SettingsActivity.this, "Profile Info update successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                    else {
-                        progressDialog.dismiss();
-                        Toast.makeText(SettingsActivity.this, "Error.", Toast.LENGTH_SHORT).show();
-                    }
+                            }
+                        }
+                    });
                 }
             });
+
+
+
+//            uploadTask.continueWithTask(new Continuation() {
+//                @Override
+//                public Object then(@NonNull Task task) throws Exception {
+//                    if(!task.isSuccessful()){
+//                        throw task.getException();
+//                    }
+//                    return fileRef.getDownloadUrl();
+//                }
+//            }).addOnCompleteListener(new OnCompleteListener<Uri> () {
+//                @Override
+//                public void onComplete(@NonNull Task<Uri> task) {
+//                    if(task.isSuccessful()){
+//                        Uri downloadUrl = task.getResult();
+//                        myUrl = downloadUrl.toString();
+//
+//                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+//                        HashMap<String, Object> userMap = new HashMap<>();
+//                        userMap.put("name",fullNameEditText.getText().toString());
+//                        userMap.put("address",addressEditText.getText().toString());
+//                        userMap.put("phoneOrder",userPhoneEditText.getText().toString());
+//                        userMap.put("image",myUrl);
+//                        ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
+//
+//                        progressDialog.dismiss();
+//
+//                        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
+//                        Toast.makeText(SettingsActivity.this, "Profile Info update successfully", Toast.LENGTH_SHORT).show();
+//                        finish();
+//                    }
+//                    else {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(SettingsActivity.this, "Error.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
         }
         else{
             Toast.makeText(this, "image is not selected", Toast.LENGTH_SHORT).show();
