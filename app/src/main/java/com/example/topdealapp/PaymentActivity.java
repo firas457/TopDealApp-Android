@@ -58,7 +58,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         try {
             JSONObject options = new JSONObject();
             //Set Company Name
-            options.put("name", "My E-Commerce App");
+            options.put("name", "TOPDEAL");
             //Ref no
             options.put("description", "Reference No. #123456");
             //Image to be display

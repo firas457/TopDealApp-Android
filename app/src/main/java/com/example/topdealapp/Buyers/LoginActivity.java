@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.topdealapp.Admin.AdminHomeActivity;
 import com.example.topdealapp.Sellers.SellerProductCategoryActivity;
 import com.example.topdealapp.Model.Users;
@@ -93,6 +97,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void LoginUser(){
+//
+//        String phone = InputPhoneNumber.getText().toString();
+//        String password = InputPassword.getText().toString();
+//        RequestQueue volleyQueue = Volley.newRequestQueue(LoginActivity.this);
+//        String url = "http://192.168.1.21:3000/?phone=" + phone + "&password=" + password;
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                response -> {
+//                    if (response.equals("correct!")) {
+//                        Toast.makeText(LoginActivity.this, "Register successfully!", Toast.LENGTH_SHORT).show();
+//                        AllowAccessToAccount(phone, password);
+//
+//                    } else Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
+//                }, error -> {
+//            Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//        });
+//        volleyQueue.add(stringRequest);
+//    }
+
 
     private void LoginUser(){
         String phone = InputPhoneNumber.getText().toString();

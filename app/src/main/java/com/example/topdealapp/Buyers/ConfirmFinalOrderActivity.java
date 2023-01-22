@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.topdealapp.PaymentActivity;
 import com.example.topdealapp.Prevalent.Prevalent;
 import com.example.topdealapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,6 +48,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Check();
+//                Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentActivity.class);
+//                startActivity(intent);
             }
         });
     }

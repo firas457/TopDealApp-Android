@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.topdealapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +26,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -48,8 +59,11 @@ public class RegisterActivity extends AppCompatActivity {
                 CreateAccount();
             }
         });
-
     }
+
+
+
+
 
     // function to create an account
     private void CreateAccount(){
@@ -75,6 +89,54 @@ public class RegisterActivity extends AppCompatActivity {
             ValidatePhoneNumber(name, phone, password);
         }
     }
+
+//    private void CreateAccount(){
+//
+//        String name = InputName.getText().toString();
+//        String phone = InputPhoneNumber.getText().toString();
+//        String password = InputPassword.getText().toString();
+//
+//        final DatabaseReference RootRef;
+//        RootRef = FirebaseDatabase.getInstance().getReference();
+//        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.child("Users").child(phone).exists()){
+//                    Toast.makeText(RegisterActivity.this, "This "+ phone + " already exists", Toast.LENGTH_SHORT).show();
+//                    loadingBar.dismiss();
+//                    Toast.makeText(RegisterActivity.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
+//
+//                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                }
+//                else{
+//                    RequestQueue volleyQueue = Volley.newRequestQueue(RegisterActivity.this);
+//
+//                    String url = "http://10.112.4.104:3000/create/?name=" + name + "&phone=" + phone + "&password=" + password;
+//                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                            response -> {
+//                                if (response.equals("Done!")) {
+//                                    Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
+//                                    loadingBar.dismiss();
+//                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                                    startActivity(intent);
+//
+//                                } else
+//                                    Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
+//                            }, error -> {
+//                        Toast.makeText(RegisterActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                    });
+//                    volleyQueue.add(stringRequest);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//
+//    }
 
     // function to check the validate of ohine number
     private void ValidatePhoneNumber(String name, String phone, String password){
@@ -124,4 +186,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
